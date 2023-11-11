@@ -6,12 +6,15 @@ import { Playlist } from "@/lib/data/playlists"
 import React, { useCallback } from "react"
 import { ApiHandlers } from "@/lib/api/handlers"
 import { HomePageData } from "@/lib/types"
+import {  useNavigate } from "react-router-dom"
+import {  HomeIcon } from "lucide-react"
 
 interface SidebarProps extends React.HTMLAttributes<HTMLDivElement> {
   playlists: Playlist[]
 }
 
 export function Sidebar({ className, playlists }: SidebarProps) {
+  const navigate = useNavigate();
   const [tabs, setTabs] = React.useState<null | HomePageData>(null)
   const fetchMusic = useCallback(async () => {
     const { data } = await ApiHandlers.homepageData()     
@@ -28,10 +31,14 @@ export function Sidebar({ className, playlists }: SidebarProps) {
             Discover
           </h2>
           <div className="space-y-1">
+          <Button variant="ghost"  onClick={() => navigate(`/`)} className="w-full justify-start">
+               <HomeIcon className="mr-2 h-4 w-4"/>
+              Home
+            </Button>
             {tabs !== null &&
               Object.keys(tabs).reverse().map((key) => {
                 return (
-                  <Button key={key} variant="ghost" className="w-full justify-start">
+                  <Button key={key} onClick={() => navigate(`/${key}`)} variant="ghost" className="w-full justify-start">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 24 24"

@@ -3,7 +3,7 @@ import { Download, PlayCircle ,Menu} from 'lucide-react'
 import React from 'react'
  
 const MusicCard = ({song}:{song:Song}) => {
-  console.log()
+ 
   return (
     <div className="py-4 w-72">
       <div className="flex bg-white shadow-lg rounded-lg overflow-hidden">
