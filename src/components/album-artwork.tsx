@@ -16,15 +16,18 @@ import { playlists } from "@/lib/data/playlists"
 import React from "react"
 import { Album } from "@/lib/types"
 import { sentenceCase } from "change-case"
+import { useNavigate } from "react-router-dom"
+import { slugify } from "@/lib/helpers"
 
 interface AlbumArtworkProps extends React.HTMLAttributes<HTMLDivElement> {
   album: Album
 
 }
 
-export function AlbumArtwork({ album,className,...props }: AlbumArtworkProps) {
+export function AlbumArtwork({ album, className, ...props }: AlbumArtworkProps) {
+  const navigate = useNavigate()
   return (
-    <div className={cn("space-y-3", className)} {...props}>
+    <div className={cn("space-y-3 cursor-pointer", className)} {...props} onClick={() => navigate(`/album/${slugify(decodeURI(album.name))}`)}>
       <ContextMenu>
         <ContextMenuTrigger>
           <div className="overflow-hidden rounded-md">
@@ -74,7 +77,7 @@ export function AlbumArtwork({ album,className,...props }: AlbumArtworkProps) {
         </ContextMenuContent>
       </ContextMenu>
       <div className="space-y-1 text-sm">
-        <h3 className="font-medium leading-none">{album.name.substring(0, 20)}</h3>
+        <h3 className="font-medium leading-none">{decodeURI(album.name).substring(0, 20)}</h3>
         <p className="text-xs text-muted-foreground">{sentenceCase(album.language)}</p>
       </div>
     </div>

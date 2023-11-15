@@ -25,6 +25,6 @@
     "noUnusedParameters": false,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src", "src/pages/album.tsx"],
+  "include": ["src", "src/pages/dynamicCard.tsx"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

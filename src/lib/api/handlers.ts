@@ -1,12 +1,6 @@
 import { axiosInstance } from "./instance";
 
-enum SearchType {
-    ALL = "all",
-    SONG = "songs",
-    ARTIST = "artists",
-    ALBUM = "albums",
-    PLAYLIST = "playlists"
-}
+type SearchType = "all" | "songs" | "artists" | "albums" | "playlists"
 export class ApiHandlers {
 
     static async homepageData(language: string = "hindi,english") {

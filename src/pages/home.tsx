@@ -12,7 +12,7 @@ import { HomePageData } from "@/lib/types"
 import React from "react"
 import { ApiHandlers } from "@/lib/api/handlers"
 import CardContainer from "@/components/cardContainer"
-import DynamicCard from "./album"
+import DynamicCard from "./dynamicCard"
 import { ScrollArea } from "@/components/ui/scroll-area"
 
 export default function Home() {
@@ -58,8 +58,6 @@ export default function Home() {
         {tabs !== null && <DynamicCard title="Playlists" label="Listen to others taste" type="playlists" tabs={tabs} />}
         <Separator className="my-4" />
         {tabs !== null && <DynamicCard title="Charts" label="Most Playable Songs" type="charts" tabs={tabs} />}
-
-
        </ScrollArea>
       </TabsContent>
       <TabsContent

@@ -1,5 +1,4 @@
 import { AlbumArtwork } from '@/components/album-artwork'
-import { ScrollBar } from '@/components/ui/scroll-area'
 import { HomePageData } from '@/lib/types'
 import { ScrollArea } from '@radix-ui/react-scroll-area'
 import { Separator } from '@radix-ui/react-separator'
@@ -22,21 +21,13 @@ const DynamicCard = ({ tabs, title, label, type }: { tabs: HomePageData, title: 
                 </div>
             </div>
             <Separator className="my-4" />
-            <div className="relative">
-                <ScrollArea>
-                    <div className="flex flex-row flex-wrap gap-4">
+            <div className="relative ">
+                <ScrollArea >
+                    <div className="flex flex-row flex-wrap gap-4 pb-28">
                         {tabs !== null && type === "albums" &&
                             tabs["albums"].map((album) => {
                                 return (
                                     <AlbumArtwork album={album} key={album.id} />
-                                )
-                            })
-                        }
-                        {tabs !== null && type === "charts" &&
-                            tabs["charts"].map((charts) => {
- 
-                                return (
-                                    <Charts charts={charts} key={charts.id} />
                                 )
                             })
                         }
@@ -47,9 +38,18 @@ const DynamicCard = ({ tabs, title, label, type }: { tabs: HomePageData, title: 
                                 )
                             })
                         }
+                        {tabs !== null && type === "charts" &&
+                            tabs["charts"].map((charts) => {
+
+                                return (
+                                    <Charts charts={charts} key={charts.id} />
+                                )
+                            })
+                        }
+
                     </div>
 
-                    <ScrollBar orientation="vertical" />
+
                 </ScrollArea>
             </div>
         </>
